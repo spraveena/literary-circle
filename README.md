@@ -182,6 +182,6 @@ MIT License - see [LICENSE](LICENSE) file. Free for personal and commercial use.
 
 <div align="center">
 
-**Built with ❤️ by a hobbyist**
+*"We built Literary Circle because we wanted to get back to what we loved most about our book club: discovering amazing stories and having great conversations about them. Every line of code serves that goal."* - The Literary Circle Team
 
 </div>
