@@ -1,0 +1,135 @@
+{
+  "name": "literary-circle",
+  "version": "1.1.0",
+  "description": "Thoughtful reading communities for discerning professionals with real-time collaboration",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "live-server --port=3000 --open=/",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:e2e": "playwright test",
+    "lint": "eslint js/**/*.js",
+    "lint:fix": "eslint js/**/*.js --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "deploy": "gh-pages -d dist",
+    "deploy:netlify": "netlify deploy --prod --dir=dist",
+    "analyze": "vite-bundle-analyzer",
+    "validate": "html-validate index.html",
+    "lighthouse": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html",
+    "start": "npm run serve"
+  },
+  "keywords": [
+    "book-club",
+    "reading-group",
+    "collaboration",
+    "books",
+    "literature",
+    "recommendations",
+    "supabase",
+    "real-time"
+  ],
+  "author": "Literary Circle Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/literary-circle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/literary-circle/issues"
+  },
+  "homepage": "https://yourusername.github.io/literary-circle/",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/jest": "^29.5.8",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "gh-pages": "^6.1.0",
+    "html-validate": "^8.7.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lighthouse": "^11.3.0",
+    "live-server": "^1.2.2",
+    "netlify-cli": "^17.10.1",
+    "prettier": "^3.1.0",
+    "vite": "^5.0.0",
+    "vite-bundle-analyzer": "^0.7.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
+    "testMatch": ["<rootDir>/tests/**/*.test.js"],
+    "collectCoverageFrom": [
+      "js/**/*.js",
+      "!js/main.js",
+      "!**/node_modules/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2022": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-debugger": "error",
+      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+      "prefer-const": "error",
+      "no-var": "error"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 80,
+    "endOfLine": "lf"
+  },
+  "files": [
+    "index.html",
+    "css/",
+    "js/",
+    "assets/",
+    "README.md",
+    "LICENSE"
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/yourusername"
+  }
+}

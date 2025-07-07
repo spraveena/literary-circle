@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literary Circle</title>
+    
+    <!-- External Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Meta Tags for SEO and Social Sharing -->
+    <meta name="description" content="Literary Circle - Thoughtful reading communities for discerning professionals. Create collaborative book clubs, curate collections, and discover new reads together.">
+    <meta name="keywords" content="book club, reading group, book recommendations, collaborative reading, literature">
+    <meta name="author" content="Literary Circle">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Literary Circle - Collaborative Reading Communities">
+    <meta property="og:description" content="Create and manage thoughtful reading communities with real-time collaboration.">
+    <meta property="og:url" content="https://your-domain.com">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Literary Circle - Collaborative Reading Communities">
+    <meta property="twitter:description" content="Create and manage thoughtful reading communities with real-time collaboration.">
+</head>
+<body>
+    <!-- Loading Indicator -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading Literary Circle...</p>
+        </div>
+    </div>
+
+    <!-- Main Application Container -->
+    <div class="container" id="mainContainer" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <h1>Literary Circle</h1>
+            <p>Thoughtful reading communities for discerning professionals</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation" id="navigation" style="display: none;" aria-label="Main navigation">
+            <div>
+                <button class="nav-button" onclick="showHome()" type="button" aria-label="Return to reading groups">
+                    ← Return to Reading Groups
+                </button>
+            </div>
+            <div class="current-club" id="currentClubName" aria-live="polite"></div>
+        </nav>
+
+        <!-- Home View -->
+        <main id="homeView" class="view active">
+            <!-- Create New Reading Group Section -->
+            <section class="create-section" aria-labelledby="create-heading">
+                <h2 id="create-heading">Create New Reading Group</h2>
+                <div class="input-group">
+                    <label for="clubNameInput" class="visually-hidden">Reading group name</label>
+                    <input 
+                        type="text" 
+                        id="clubNameInput" 
+                        placeholder="Reading group name" 
+                        maxlength="100"
+                        aria-describedby="club-name-help"
+                    >
+                    <div id="club-name-help" class="input-help visually-hidden">
+                        Enter a name for your new reading group
+                    </div>
+                </div>
+                <button class="btn" onclick="createBookClub()" type="button">
+                    Create Reading Group
+                </button>
+            </section>
+
+            <!-- Existing Reading Groups -->
+            <section aria-labelledby="groups-heading">
+                <h2 id="groups-heading" style="margin-bottom: 35px; font-weight: 500; color: #2d5016; font-size: 1.5rem;">
+                    Your Reading Groups
+                </h2>
+                <div class="home-grid" id="bookClubsList" role="list" aria-live="polite">
+                    <div class="empty-state">No reading groups yet. Create your first group above.</div>
+                </div>
+            </section>
+
+            <!-- User Stats (Hidden by default, shown in collaborative mode) -->
+            <aside id="userStats" class="user-stats" style="display: none;" aria-labelledby="stats-heading">
+                <h3 id="stats-heading">Your Activity</h3>
+                <div id="statsContent"></div>
+            </aside>
+        </main>
+
+        <!-- Book Club View -->
+        <main id="bookClubView" class="view">
+            <!-- Sharing Section (Collaborative Mode Only) -->
+            <section class="section sharing-section" id="sharingSection" style="display: none;" aria-labelledby="sharing-heading">
+                <h2 id="sharing-heading">📤 Share This Reading Group</h2>
+                <p>Invite others to join this collaborative reading group:</p>
+                <div class="sharing-controls">
+                    <div class="share-url-container">
+                        <label for="shareUrl" class="visually-hidden">Share URL</label>
+                        <input 
+                            type="text" 
+                            id="shareUrl" 
+                            readonly 
+                            aria-describedby="share-url-help"
+                            class="share-url-input"
+                        >
+                        <div id="share-url-help" class="visually-hidden">
+                            Copy this link to invite others to your reading group
+                        </div>
+                    </div>
+                    <button class="btn btn-small" onclick="copyShareUrl()" type="button" aria-label="Copy share link">
+                        📋 Copy Link
+                    </button>
+                    <button class="btn btn-secondary btn-small" onclick="generateQRCode()" type="button" aria-label="Generate QR code">
+                        📱 QR Code
+                    </button>
+                </div>
+                <p class="collaboration-note">
+                    ✨ Real-time collaboration: Changes sync instantly across all members
+                </p>
+            </section>
+
+            <!-- Main Content Grid -->
+            <div class="grid">
+                <!-- Curate Collection Section -->
+                <section class="section" aria-labelledby="curate-heading">
+                    <h2 id="curate-heading">Curate Collection</h2>
+                    <div class="input-group">
+                        <label for="bookInput" class="visually-hidden">Book title or author</label>
+                        <input 
+                            type="text" 
+                            id="bookInput" 
+                            placeholder="Book title or author"
+                            maxlength="200"
+                            aria-describedby="book-input-help"
+                        >
+                        <div id="book-input-help" class="input-help visually-hidden">
+                            Enter a book title or author to add to your collection
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn" onclick="addBook()" type="button">
+                            Add to Collection
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearAllBooks()" type="button">
+                            Clear Collection
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Current Collection Section -->
+                <section class="section" aria-labelledby="collection-heading">
+                    <h2 id="collection-heading">
+                        Current Collection 
+                        <span class="book-count">(<span id="bookCount">0</span> titles)</span>
+                    </h2>
+                    <div 
+                        class="book-list" 
+                        id="bookList" 
+                        role="list" 
+                        aria-live="polite"
+                        aria-label="Books in collection"
+                    >
+                        <div class="empty-state">No titles in collection</div>
+                    </div>
+                </section>
+
+                <!-- Selection Process Section -->
+                <section class="section selection-section" aria-labelledby="selection-heading">
+                    <h2 id="selection-heading">Selection Process</h2>
+                    <button 
+                        class="btn" 
+                        onclick="selectRandomBook()" 
+                        id="selectBtn" 
+                        disabled 
+                        type="button"
+                        aria-describedby="select-help"
+                    >
+                        Draw Selection
+                    </button>
+                    <div id="select-help" class="visually-hidden">
+                        Randomly select a book from your collection
+                    </div>
+                    
+                    <div id="selectedBook" aria-live="polite" aria-label="Selected book"></div>
+                    
+                    <div id="selectionButtons" class="selection-buttons" style="display: none;">
+                        <button class="btn btn-secondary" onclick="regenerateSelection()" type="button">
+                            Draw Again
+                        </button>
+                        <button class="btn" onclick="confirmSelection()" type="button">
+                            Confirm Selection
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Recommendations Section -->
+                <section class="section recommendations-section" aria-labelledby="recommendations-heading">
+                    <h2 id="recommendations-heading">Curated Recommendations</h2>
+                    <div 
+                        id="recommendationsContainer" 
+                        aria-live="polite"
+                        aria-label="Book recommendations"
+                    >
+                        <div class="empty-state">Build your collection to receive personalized recommendations</div>
+                    </div>
+                    <div class="divider" id="recommendDivider" style="display: none;"></div>
+                    <button 
+                        class="btn" 
+                        onclick="getRecommendations()" 
+                        id="recommendBtn" 
+                        style="display: none;"
+                        type="button"
+                    >
+                        Generate Recommendations
+                    </button>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Confirmation Dialog -->
+    <div 
+        class="confirmation-overlay" 
+        id="confirmationOverlay" 
+        onclick="handleOverlayClick(event)"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirmation-title"
+        style="display: none;"
+    >
+        <div class="confirmation-dialog" onclick="event.stopPropagation()">
+            <h3 id="confirmation-title">Confirm Deletion</h3>
+            <p id="confirmationMessage" role="alert"></p>
+            <div class="confirmation-buttons">
+                <button class="btn btn-secondary" onclick="hideConfirmation()" type="button">
+                    Cancel
+                </button>
+                <button class="btn btn-danger" onclick="confirmDeletion()" type="button">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Boundary -->
+    <div id="errorBoundary" class="error-boundary" style="display: none;">
+        <h2>⚠️ Something went wrong</h2>
+        <p>We're sorry, but something unexpected happened.</p>
+        <button onclick="window.location.reload()" class="btn">
+            Reload Page
+        </button>
+    </div>
+
+    <!-- Application Scripts -->
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Fallback for browsers without module support -->
+    <script nomodule>
+        document.getElementById('loadingScreen').style.display = 'none';
+        document.getElementById('errorBoundary').style.display = 'block';
+        document.getElementById('errorBoundary').innerHTML = `
+            <h2>⚠️ Browser Not Supported</h2>
+            <p>This application requires a modern browser with ES6 module support.</p>
+            <p>Please update your browser or try a different one.</p>
+        `;
+    </script>
+
+    <!-- Initialize App -->
+    <script type="module">
+        // Show main container once modules are loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hide loading screen after a short delay to ensure smooth transition
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('mainContainer').style.display = 'block';
+            }, 500);
+        });
+
+        // Global error handler
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+            document.getElementById('loadingScreen').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'none';
+            document.getElementById('errorBoundary').style.display = 'block';
+        });
+
+        // Unhandled promise rejection handler
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+        });
+    </script>
+
+    <!-- Service Worker Registration (for future PWA features) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+# ========================================
+# Literary Circle - Git Ignore File
+# ========================================
+
+# ====== ENVIRONMENT VARIABLES (CRITICAL!) ======
+# Never commit these - they contain secrets!
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+
+# ====== NODE.JS & NPM ======
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Package manager lock files (choose one to commit)
+# If using npm, keep package-lock.json and ignore others
+# yarn.lock
+# pnpm-lock.yaml
+
+# NPM cache
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ====== BUILD OUTPUTS ======
+# Production builds
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vuepress/dist/
+
+# Temporary build files
+*.tsbuildinfo
+.cache/
+.parcel-cache/
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ====== DEVELOPMENT TOOLS ======
+# Development server files
+.vite/
+vite.config.js.timestamp-*
+
+# Bundler outputs
+.fusebox/
+.dynamodb/
+
+# Microbundle cache
+.rpt2_cache/
+
+# ====== TESTING ======
+# Test coverage
+coverage/
+.nyc_output/
+.coverage/
+
+# Test results
+test-results/
+playwright-report/
+lighthouse-report.html
+
+# Jest
+jest-coverage/
+
+# ====== LOGS ======
+# All log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ====== IDE & EDITORS ======
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ====== OPERATING SYSTEMS ======
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ====== SUPABASE ======
+# Supabase CLI files
+.supabase/
+supabase/.env
+supabase/config.toml.local
+
+# ====== DEPLOYMENT ======
+# Netlify
+.netlify/
+
+# Vercel
+.vercel/
+
+# Firebase
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+
+# Heroku
+.heroku/
+
+# GitHub Pages
+.gh-pages/
+
+# ====== SECURITY & CERTIFICATES ======
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# API keys and secrets (additional patterns)
+**/secrets.json
+**/config/secrets.*
+**/*secret*
+**/*private*
+**/credentials.json
+
+# ====== TEMPORARY FILES ======
+# Temporary folders
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Cache directories
+.cache/
+.eslintcache
+.stylelintcache
+
+# Optional REPL history
+.node_repl_history
+
+# ====== DOCUMENTATION ======
+# Generated documentation
+docs/_build/
+site/
+_site/
+
+# ====== DATABASES ======
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Database dumps
+*.sql
+*.dump
+
+# ====== MEDIA & ASSETS ======
+# Large media files (add specific extensions as needed)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+*.flv
+*.webm
+*.mp3
+*.wav
+*.flac
+*.aac
+
+# Large images (if not needed in repo)
+# *.psd
+# *.ai
+# *.eps
+
+# ====== ARCHIVES ======
+# Compressed files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+*.bz2
+
+# ====== PACKAGE OUTPUTS ======
+# NPM pack output
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# ====== EDITOR SPECIFIC ======
+# VS Code workspace settings you might want to ignore
+.vscode/settings.json
+.vscode/launch.json
+
+# ====== PROJECT SPECIFIC ======
+# Literary Circle specific files to ignore
+
+# User uploaded content (if any)
+uploads/
+user-content/
+
+# Generated reports
+reports/
+analytics/
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Lock files for specific tools
+.eslintrc.js.lock
+
+# ====== MISCELLANEOUS ======
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Storybook build outputs
+storybook-static/
+
+# Temporary folders
+.temp/
+.tmp/
+
+# MacOS specific
+.com.apple.timemachine.donotpresent
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ====== COMMENTS FOR TEAM ======
+# This .gitignore is comprehensive for the Literary Circle project
+# Key things being ignored:
+# 1. Environment variables (contains Supabase keys)
+# 2. node_modules (dependencies)
+# 3. Build outputs (dist/, build/)
+# 4. IDE settings (.vscode/, .idea/)
+# 5. OS-specific files (.DS_Store, Thumbs.db)
+# 6. Logs and cache files
+# 7. Temporary and backup files
+#
+# If you need to commit any of these files, you can:
+# - Use `git add -f filename` to force add
+# - Comment out the relevant line in this file
+# - Create an exception with !filename
