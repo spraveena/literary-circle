@@ -331,12 +331,10 @@ body {
 /* Dark mode support (future enhancement) */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-primary: #1a1a1a;
-        --bg-white: #2d2d2d;
-        --bg-light: #333333;
-        --color-text: #e0e0e0;
-        --color-text-light: #b0b0b0;
-        --border-color: #404040;
+        --bg-primary: #faf8f5 !important;
+        --bg-white: #ffffff !important;
+        --color-text: #3d4738 !important;
+        --color-primary: #2d5016 !important;
     }
 }
 
