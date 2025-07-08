@@ -6,6 +6,7 @@ A collaborative book club management application with real-time sync, smart reco
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
 [🚀 Live Demo](https://literary-circle.netlify.app) | 
 
 ## 🌟 The Story Behind Literary Circle
