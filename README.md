@@ -14,7 +14,7 @@ Literary Circle was born from a real problem that book lovers everywhere will re
 
 ### The Problem
 As avid readers running our own book club, we found ourselves collecting book recommendations everywhere—from friends, bookstores, podcasts, social media. Our shared notes app became a treasure trove of 30+ titles we were excited to explore.
-But this abundance created a new challenge: **How do you choose just one book from so many great options?**
+But this abundance created a new challenge: **How do you keep them allin one place? How do you choose just one book from so many great options?**
 We'd spend entire evenings debating which book to read next, often longer than we'd actually spend reading. Decision paralysis had replaced reading excitement.
 
 ### The Solution Evolution
