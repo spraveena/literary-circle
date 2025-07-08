@@ -4,10 +4,12 @@
 
 A collaborative book club management application with real-time sync, smart recommendations, and fair selection system. Coding mostly done by Claude AI, features were mostly inspired by tools I wished I had to manage book clubs and reading lists - all in one platform. 
 
+[🚀 Live Demo](https://literary-circle.netlify.app) 
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-[🚀 Live Demo](https://literary-circle.netlify.app) 
+
 
 ## 🌟 The Story Behind Literary Circle
 
